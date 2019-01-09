@@ -47,6 +47,9 @@ exposedByDefault = {{ traefik_docker_expose_by_default | lower }}
 email = "{{ traefik_acme_email }}"
 storage = "acme.json"
 entryPoint = "https"
+{% if traefik_acme_use_staging_ca %}
+caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
+{% endif %}
 onHostRule = {{ traefik_acme_autocreate_from_host | lower }}
 [acme.httpChallenge]
 entryPoint = "http"
