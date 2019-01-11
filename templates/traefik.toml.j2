@@ -37,7 +37,7 @@ watch = true
 {% if traefik_docker_enable %}
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "{{ traefik_docker_domain }}"
+domain = "{{ traefik_docker_domain | default(inventory_hostname) }}"
 watch = true
 exposedByDefault = {{ traefik_docker_expose_by_default | lower }}
 {% endif %}

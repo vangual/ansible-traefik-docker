@@ -19,7 +19,7 @@ traefik_dashboard_basicauth_users: []
 
 # Docker
 traefik_docker_enable: true
-traefik_docker_domain: "mydomain.org"
+# traefik_docker_domain: "mydomain.org" (defaults to inventory_hostname)
 traefik_docker_expose_by_default: false
 
 # Enable automatic certificates from Let's Encrypt
