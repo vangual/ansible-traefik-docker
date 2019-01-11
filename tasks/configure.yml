@@ -17,6 +17,7 @@
     state: touch
     mode: 0600
   when: traefik_acme_enable
+  changed_when: false
 
 - name: Create traefik docker network
   docker_network:
