@@ -3,10 +3,7 @@ SHELL=/bin/bash
 ROLENAME=ansible-traefik-docker
 TESTIMAGENAME=molecule-test
 build-testimage:
-	docker build -t ${TESTIMAGENAME} -f <( \
-		echo "FROM quay.io/ansible/molecule:latest"; \
-		echo "RUN sudo pip install docker-py"; \
-	) .
+	docker build -t ${TESTIMAGENAME} .
 
 test: build-testimage
 	docker run --rm -it \
