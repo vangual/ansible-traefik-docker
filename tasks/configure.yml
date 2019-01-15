@@ -9,7 +9,6 @@
   template:
     src: docker-compose.yml.j2
     dest: "{{ traefik_directory }}/docker-compose.yml"
-  notify: start traefik
 
 - name: Ensure acme config
   file:
@@ -28,4 +27,8 @@
   docker_image:
     name: traefik
     tag: "{{ traefik_version }}"
-  notify: start traefik
+
+- name: Start traefik
+  docker_service:
+    state: present
+    project_src: "{{ traefik_directory }}"
