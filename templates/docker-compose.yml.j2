@@ -12,11 +12,11 @@ services:
       - {{ traefik_dashboard_entrypoint_port }}
 {% endif %}
     networks:
-      - traefik
+      - {{ traefik_docker_network }}
 {% if traefik_dashboard_enable %}
     labels:
       - "traefik.port={{ traefik_dashboard_entrypoint_port }}"
-      - "traefik.docker.network=traefik"
+      - "traefik.docker.network={{ traefik_docker_network }}"
       - "traefik.backend=traefik"
       - "traefik.frontend.rule=Host:traefik.{{ traefik_docker_domain | default(inventory_hostname) }}"
       - "traefik.enable=true"
@@ -31,5 +31,5 @@ services:
     container_name: traefik
 
 networks:
-  traefik:
+  {{ traefik_docker_network }}:
     external: true

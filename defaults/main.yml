@@ -9,6 +9,7 @@ traefik_log_level: "WARNING"
 traefik_entrypoint_http_port: 80
 traefik_entrypoint_http_redirect_to_https: true
 traefik_entrypoint_https_port: 443
+traefik_docker_network: "traefik"
 
 # Dashboard
 traefik_dashboard_enable: true

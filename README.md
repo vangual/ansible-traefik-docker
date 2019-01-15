@@ -18,3 +18,5 @@ Create a playbook (`traefik.yml`) from this role:
       traefik_acme_email: "user@mydomain.org"
       traefik_dashboard_basicauth_users: ["user:$apr1$somehash"]
 ```
+
+For a list of all options, see [defaults/main.yml](defaults/main.yml).
