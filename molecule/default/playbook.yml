@@ -13,13 +13,14 @@
         image: deis/example-go
         state: started
         networks:
-          - name: traefik
+          - name: custom_traefik_net
         labels:
           test: webserver
           traefik.enable: "true"
-          traefik.docker.network: traefik
+          traefik.docker.network: custom_traefik_net
 
   vars:
+    traefik_docker_network: "custom_traefik_net"
     traefik_docker_domain: 'traefik.docker.local'
     traefik_acme_enable: false
     traefik_dashboard_basicauth_enable: false
