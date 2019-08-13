@@ -42,6 +42,19 @@ services:
 {% if not traefik_use_swarm %}
     container_name: traefik
     restart: always
+{% else %}
+    deploy:
+{% if traefik_dashboard_enable %}
+      labels:
+        - "traefik.port={{ traefik_dashboard_entrypoint_port }}"
+        - "traefik.docker.network={{ traefik_docker_network }}"
+        - "traefik.backend=traefik"
+        - "traefik.frontend.rule=Host:traefik.{{ traefik_docker_domain | default(inventory_hostname) }}"
+        - "traefik.enable=true"
+      placement:
+        constraints:
+          - node.role == manager
+{% endif %}
 {% endif %}
 
 networks:
